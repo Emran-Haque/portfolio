@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-&u)ic)oseu1z08&og9^_^7_@k9&*1pl1d406=tcu4z&y_pc%y=
 DEBUG = True
 
 # Update these for production deployment
-ALLOWED_HOSTS = ['ashemran.shop', 'www.ashemran.shop', 'localhost', '127.0.0.1']  # Production + local development
+ALLOWED_HOSTS = ['ashemran.shop', 'www.ashemran.shop', 'localhost', '127.0.0.1', 'portfolio-mmm7.onrender.com']  # Production + local development
 
 
 # Application definition
