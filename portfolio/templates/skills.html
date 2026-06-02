@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}Skills & Technologies - ASH Emran's Technical Stack{% endblock %}
 
 {% block meta_description %}ASH Emran's technical skills and technologies - Django, Python, JavaScript, React, TypeScript, Flutter, Tailwind CSS, REST APIs, Data Structures, Algorithms, and more.{% endblock %}
@@ -41,11 +41,14 @@
 {% endblock %}
 
 {% block content %}
-<section class="py-12 bg-gray-50">
+<section class="py-16 md:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Skills & Technologies</h1>
-            <div class="h-1 w-20 bg-blue-600"></div>
+        <div class="mb-16">
+            <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">Technical Expertise</h1>
+            <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-8 md:p-10 rounded-xl border border-blue-100">
+                <p class="text-lg text-gray-700 leading-relaxed mb-4">I've developed a comprehensive skill set across modern web and mobile development technologies. With a strong foundation in computer science fundamentals, I leverage these tools to build scalable, performant applications. Each technology choice is deliberate—selected to solve specific problems efficiently and maintain code quality. My expertise spans both frontend and backend ecosystems, allowing me to contribute meaningfully across the full stack.</p>
+                <p class="text-lg text-gray-700 leading-relaxed">Beyond technology proficiency, I'm committed to writing clean, maintainable code and staying current with industry best practices. I believe that great software comes from understanding not just the "how," but also the "why" behind each technology choice.</p>
+            </div>
         </div>
 
         <!-- Domain Expertise -->
@@ -124,47 +127,76 @@
         </div>
 
         <!-- Skill Levels -->
-        <div class="mt-12 bg-white p-8 rounded-lg shadow-lg">
-            <h2 class="text-2xl font-bold mb-8 text-gray-900">Proficiency Levels</h2>
-            <div class="space-y-6">
-                <div>
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold text-gray-900">Python & Django</span>
-                        <span class="text-gray-600">90%</span>
+        <div class="mt-16 bg-gradient-to-br from-gray-50 to-white p-10 md:p-12 rounded-xl border border-gray-200 skill-proficiency">
+            <h2 class="text-3xl font-bold mb-12 text-gray-900">Proficiency Levels</h2>
+            <div class="space-y-8">
+                <div class="skill-bar-container">
+                    <div class="flex justify-between mb-3">
+                        <span class="font-semibold text-gray-900 text-lg">Python & Django</span>
+                        <span class="text-blue-600 font-bold text-lg">90%</span>
                     </div>
-                    <div class="bg-gray-200 rounded-full h-3">
-                        <div class="bg-blue-600 h-3 rounded-full" style="width: 90%"></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold text-gray-900">Problem Solving & DSA</span>
-                        <span class="text-gray-600">85%</span>
-                    </div>
-                    <div class="bg-gray-200 rounded-full h-3">
-                        <div class="bg-green-600 h-3 rounded-full" style="width: 85%"></div>
+                    <div class="bg-gray-200 rounded-full h-4 overflow-hidden">
+                        <div class="skill-bar bg-blue-600 h-4 rounded-full" style="width: 0%" data-width="90"></div>
                     </div>
                 </div>
-                <div>
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold text-gray-900">Web Technologies (HTML, CSS, JS)</span>
-                        <span class="text-gray-600">80%</span>
+                <div class="skill-bar-container">
+                    <div class="flex justify-between mb-3">
+                        <span class="font-semibold text-gray-900 text-lg">Problem Solving & DSA</span>
+                        <span class="text-green-600 font-bold text-lg">85%</span>
                     </div>
-                    <div class="bg-gray-200 rounded-full h-3">
-                        <div class="bg-purple-600 h-3 rounded-full" style="width: 80%"></div>
+                    <div class="bg-gray-200 rounded-full h-4 overflow-hidden">
+                        <div class="skill-bar bg-green-600 h-4 rounded-full" style="width: 0%" data-width="85"></div>
                     </div>
                 </div>
-                <div>
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold text-gray-900">Flutter & Dart</span>
-                        <span class="text-gray-600">75%</span>
+                <div class="skill-bar-container">
+                    <div class="flex justify-between mb-3">
+                        <span class="font-semibold text-gray-900 text-lg">Web Technologies (HTML, CSS, JS)</span>
+                        <span class="text-purple-600 font-bold text-lg">80%</span>
                     </div>
-                    <div class="bg-gray-200 rounded-full h-3">
-                        <div class="bg-pink-600 h-3 rounded-full" style="width: 75%"></div>
+                    <div class="bg-gray-200 rounded-full h-4 overflow-hidden">
+                        <div class="skill-bar bg-purple-600 h-4 rounded-full" style="width: 0%" data-width="80"></div>
+                    </div>
+                </div>
+                <div class="skill-bar-container">
+                    <div class="flex justify-between mb-3">
+                        <span class="font-semibold text-gray-900 text-lg">React & TypeScript</span>
+                        <span class="text-pink-600 font-bold text-lg">80%</span>
+                    </div>
+                    <div class="bg-gray-200 rounded-full h-4 overflow-hidden">
+                        <div class="skill-bar bg-pink-600 h-4 rounded-full" style="width: 0%" data-width="80"></div>
+                    </div>
+                </div>
+                <div class="skill-bar-container">
+                    <div class="flex justify-between mb-3">
+                        <span class="font-semibold text-gray-900 text-lg">Flutter & Dart</span>
+                        <span class="text-orange-600 font-bold text-lg">75%</span>
+                    </div>
+                    <div class="bg-gray-200 rounded-full h-4 overflow-hidden">
+                        <div class="skill-bar bg-orange-600 h-4 rounded-full" style="width: 0%" data-width="75"></div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <script>
+            document.querySelectorAll('.skill-bar').forEach((bar) => {
+                const targetWidth = bar.dataset.width;
+                bar.style.width = '0%';
+
+                ScrollTrigger.create({
+                    trigger: bar,
+                    start: 'top 85%',
+                    onEnter: () => {
+                        gsap.to(bar, {
+                            width: targetWidth + '%',
+                            duration: 2,
+                            ease: 'power2.out'
+                        });
+                    },
+                    once: true
+                });
+            });
+        </script>
     </div>
 </section>
 {% endblock %}

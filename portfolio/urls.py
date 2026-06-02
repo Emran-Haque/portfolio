@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
+from django.conf import settings
+from django.conf.urls.static import static
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,9 +33,19 @@ def sitemap_xml(request):
     with open(BASE_DIR / 'sitemap.xml', 'r') as f:
         return HttpResponse(f.read(), content_type='application/xml')
 
+# View for serving llms.txt
+def llms_txt(request):
+    with open(BASE_DIR / 'llms.txt', 'r') as f:
+        return HttpResponse(f.read(), content_type='text/plain')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('robots.txt', robots_txt, name='robots'),
     path('sitemap.xml', sitemap_xml, name='sitemap'),
+    path('llms.txt', llms_txt, name='llms'),
     path('', include('home.urls')),
 ]
+
+# Serve media files in development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

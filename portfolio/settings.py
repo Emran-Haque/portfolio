@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-&u)ic)oseu1z08&og9^_^7_@k9&*1pl1d406=tcu4z&y_pc%y=
 DEBUG = True
 
 # Update these for production deployment
-ALLOWED_HOSTS = ['ashemran.shop', 'www.ashemran.shop', 'localhost', '127.0.0.1', 'portfolio-mmm7.onrender.com']  # Production + local development
+ALLOWED_HOSTS = ['ashemran.shop', 'www.ashemran.shop', 'localhost', '127.0.0.1']  # Production + local development
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
     'home',
 ]
 
@@ -124,3 +125,24 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+# Media files (User uploads - blog images, etc)
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# CKEditor Configuration
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': '100%',
+        'toolbar_Full': [
+            ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'StrikeThrough', '-', 'RemoveFormat'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['Image', 'Table', 'HorizontalRule', 'SpecialChar'],
+            ['Source'],
+            ['Maximize']
+        ],
+    },
+}

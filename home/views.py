@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import View
+from .models import Blog
 
 # Home page view
 def home(request):
@@ -105,7 +106,27 @@ def contact(request):
         'email': 'emranhaquee@gmail.com',
         'phone': '+8801521742124',
         'location': 'Sherpur, Bangladesh',
-        'linkedin': 'https://www.linkedin.com/in/ahta-shamul-hoque-emran-a56775367/',
+        'linkedin': 'https://www.linkedin.com/in/ash-emran/',
         'github': 'https://github.com/Emran-Haque',
     }
     return render(request, 'contact.html', contact_data)
+
+# Blog list view
+def blog_list(request):
+    blogs = Blog.objects.filter(is_published=True).order_by('-publish_date')
+    featured_blogs = blogs.filter(featured=True)[:3]
+    blog_data = {
+        'blogs': blogs,
+        'featured_blogs': featured_blogs,
+    }
+    return render(request, 'blog_list.html', blog_data)
+
+# Blog detail view
+def blog_detail(request, slug):
+    blog = get_object_or_404(Blog, slug=slug, is_published=True)
+    related_blogs = Blog.objects.filter(is_published=True).exclude(id=blog.id)[:3]
+    blog_data = {
+        'blog': blog,
+        'related_blogs': related_blogs,
+    }
+    return render(request, 'blog_detail.html', blog_data)

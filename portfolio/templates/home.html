@@ -1,5 +1,6 @@
-{% extends "base.html" %}
 
+{% extends "base.html" %}
+{% load static %}
 {% block title %}ASH Emran - Full Stack Developer & Competitive Programmer{% endblock %}
 
 {% block meta_description %}ASH Emran - Full Stack Developer, Competitive Programmer, and Software Engineer. Explore my portfolio, projects, and competitive programming achievements. ICPC participant with 5+ projects.{% endblock %}
@@ -41,22 +42,26 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+<section class="bg-gradient-to-br from-blue-50 via-white to-blue-50 py-20 md:py-32">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-                <h1 class="text-5xl md:text-6xl font-bold mb-4">ASH Emran</h1>
-                <p class="text-xl md:text-2xl text-blue-100 mb-6">Full Stack Developer & Competitive Programmer</p>
-                <p class="text-lg text-blue-100 mb-8">Crafting elegant solutions through code. Passionate about building scalable web applications and solving algorithmic challenges.</p>
+            <!-- Hero Text -->
+            <div class="hero-text">
+                <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">ASH Emran</h1>
+                <p class="text-xl md:text-2xl text-blue-600 font-semibold mb-6">Full Stack Developer & Competitive Programmer</p>
+                <p class="text-lg text-gray-700 mb-8 leading-relaxed">Crafting elegant solutions through code. I'm passionate about building scalable web applications, solving complex algorithmic problems, and continuously expanding my technical expertise. With experience in Django, React, and Flutter, I deliver high-quality solutions tailored to your needs.</p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="{% url 'about' %}" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition">Learn More</a>
-                    <a href="{% url 'projects' %}" class="bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition border border-white">View Projects</a>
+                    <a href="{% url 'about' %}" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition inline-block">Learn More About Me</a>
+                    <a href="{% url 'projects' %}" class="bg-gray-200 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition inline-block">View My Projects</a>
                 </div>
             </div>
-            <div class="hidden md:block">
-                <div class="bg-blue-700 rounded-lg p-8 text-center">
-                    <div class="bg-blue-600 rounded-full w-48 h-48 mx-auto flex items-center justify-center">
-                        <span class="text-6xl">💻</span>
+
+            <!-- Hero Image - Half Crop (Top/Upper Side) -->
+            <div class="hidden md:flex justify-center items-center">
+                <div class="relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-400 rounded-xl blur opacity-30"></div>
+                    <div class="hero-photo relative rounded-xl w-72 h-96 overflow-hidden bg-gray-200 flex items-center justify-center">
+                        <img src="{% static 'images/profile.jpg' %}" alt="ASH Emran" class="w-full h-full object-cover object-top">
                     </div>
                 </div>
             </div>
@@ -64,79 +69,175 @@
     </div>
 </section>
 
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero text animation
+    gsap.from('.hero-text h1, .hero-text p, .hero-text a', {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power3.out',
+        immediateRender: false
+    });
+
+    // Hero image animation
+    gsap.from('.hero-photo', {
+        opacity: 0,
+        x: 60,
+        duration: 1,
+        delay: 0.3,
+        ease: 'power3.out',
+        immediateRender: false
+    });
+</script>
+
 <!-- Quick Stats -->
-<section class="py-12 bg-white">
+<section class="py-16 bg-blue-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div class="text-center">
-                <div class="text-4xl font-bold text-blue-600 mb-2">5+</div>
-                <p class="text-gray-600">Projects Completed</p>
+            <div class="text-center stat-card">
+                <div class="flex items-baseline justify-center mb-3">
+                    <span class="text-5xl font-bold text-blue-600 counter" data-target="10">0</span>
+                    <span class="text-3xl text-blue-600 font-bold ml-1">+</span>
+                </div>
+                <p class="text-gray-700 font-medium text-sm">Projects Completed</p>
             </div>
-            <div class="text-center">
-                <div class="text-4xl font-bold text-blue-600 mb-2">2</div>
-                <p class="text-gray-600">Competitive Programming Contests</p>
+            <div class="text-center stat-card">
+                <div class="text-5xl font-bold text-blue-600 mb-3 counter" data-target="2">0</div>
+                <p class="text-gray-700 font-medium text-sm">Competitive Programming Contests</p>
             </div>
-            <div class="text-center">
-                <div class="text-4xl font-bold text-blue-600 mb-2">10+</div>
-                <p class="text-gray-600">Technologies</p>
+            <div class="text-center stat-card">
+                <div class="flex items-baseline justify-center mb-3">
+                    <span class="text-5xl font-bold text-blue-600 counter" data-target="10">0</span>
+                    <span class="text-3xl text-blue-600 font-bold ml-1">+</span>
+                </div>
+                <p class="text-gray-700 font-medium text-sm">Technologies Mastered</p>
             </div>
-            <div class="text-center">
-                <div class="text-4xl font-bold text-blue-600 mb-2">3.71</div>
-                <p class="text-gray-600">CGPA</p>
+            <div class="text-center stat-card">
+                <div class="text-5xl font-bold text-blue-600 mb-3">3.71</div>
+                <p class="text-gray-700 font-medium text-sm">B.Sc CSE CGPA</p>
             </div>
         </div>
     </div>
+
+    <script>
+        // Counter animation on scroll
+        document.querySelectorAll('.counter').forEach(counter => {
+            const target = parseInt(counter.dataset.target);
+            let obj = { value: 0 };
+
+            ScrollTrigger.create({
+                trigger: counter,
+                start: 'top 80%',
+                onEnter: () => {
+                    gsap.to(obj, {
+                        value: target,
+                        duration: 2,
+                        ease: 'power2.out',
+                        onUpdate: function() {
+                            counter.textContent = Math.floor(obj.value);
+                        }
+                    });
+                },
+                once: true
+            });
+        });
+    </script>
 </section>
 
 <!-- Featured Skills -->
-<section class="py-12 bg-gray-50">
+<section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Featured Skills</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What I Specialize In</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">I bring expertise across the full stack, combining web development, algorithmic problem-solving, and mobile applications to deliver comprehensive solutions.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 skill-cards">
             <!-- Web Development -->
-            <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition">
-                <div class="text-4xl mb-4">🌐</div>
-                <h3 class="text-xl font-bold mb-3">Web Development</h3>
-                <p class="text-gray-600 mb-4">Full-stack web development with Django, HTML, CSS, Tailwind CSS and JavaScript.</p>
+            <div class="bg-gradient-to-br from-blue-50 to-white p-8 rounded-xl border border-blue-100 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
+                <div class="text-5xl mb-4">🌐</div>
+                <h3 class="text-2xl font-bold mb-4 text-gray-900">Web Development</h3>
+                <p class="text-gray-700 mb-4 leading-relaxed">Expert full-stack web development with Django backend and modern frontend technologies. I build responsive, scalable applications using HTML5, CSS3, JavaScript, and frameworks like React and Next.js. Specialized in REST APIs, database design, and deployment optimization.</p>
                 <div class="flex flex-wrap gap-2">
-                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded">Django</span>
-                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded">Nextjs</span>
-                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded">TypeScript</span>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">Django</span>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">Next.js</span>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">TypeScript</span>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">Tailwind CSS</span>
                 </div>
             </div>
 
             <!-- Problem Solving -->
-            <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition">
-                <div class="text-4xl mb-4">🧩</div>
-                <h3 class="text-xl font-bold mb-3">Problem Solving</h3>
-                <p class="text-gray-600 mb-4">Strong foundation in data structures, algorithms, and competitive programming.</p>
+            <div class="bg-gradient-to-br from-green-50 to-white p-8 rounded-xl border border-green-100 hover:border-green-300 hover:shadow-lg transition-all duration-300">
+                <div class="text-5xl mb-4">🧩</div>
+                <h3 class="text-2xl font-bold mb-4 text-gray-900">Problem Solving</h3>
+                <p class="text-gray-700 mb-4 leading-relaxed">Strong foundation in data structures and algorithms with competitive programming experience. I excel at breaking down complex problems into elegant solutions, optimizing code for performance, and implementing efficient algorithms. Ranked 147th at ICPC Dhaka Regional 2023.</p>
                 <div class="flex flex-wrap gap-2">
-                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded">DSA</span>
-                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded">ICPC</span>
-                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded">C++</span>
+                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">Data Structures</span>
+                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">Algorithms</span>
+                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">C++</span>
+                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">Python</span>
                 </div>
             </div>
 
             <!-- Mobile Development -->
-            <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition">
-                <div class="text-4xl mb-4">📱</div>
-                <h3 class="text-xl font-bold mb-3">Mobile Development</h3>
-                <p class="text-gray-600 mb-4">Cross-platform mobile app development using Flutter for iOS and Android.</p>
+            <div class="bg-gradient-to-br from-purple-50 to-white p-8 rounded-xl border border-purple-100 hover:border-purple-300 hover:shadow-lg transition-all duration-300">
+                <div class="text-5xl mb-4">📱</div>
+                <h3 class="text-2xl font-bold mb-4 text-gray-900">Mobile Development</h3>
+                <p class="text-gray-700 mb-4 leading-relaxed">Cross-platform mobile application development using Flutter for iOS and Android. I create beautiful, performant native-like experiences with smooth animations, responsive layouts, and intuitive user interfaces. Proficient in Dart and Firebase integration.</p>
                 <div class="flex flex-wrap gap-2">
-                    <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded">Flutter</span>
-                    <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded">Dart</span>
+                    <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">Flutter</span>
+                    <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">Dart</span>
+                    <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">Firebase</span>
+                    <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">iOS/Android</span>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        // Skill cards scroll animation
+        gsap.utils.toArray('.skill-cards > div').forEach((card, index) => {
+            gsap.from(card, {
+                opacity: 0,
+                y: 40,
+                duration: 0.6,
+                delay: index * 0.15,
+                immediateRender: false,
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 85%'
+                }
+            });
+        });
+    </script>
 </section>
 
 <!-- Call to Action -->
-<section class="py-12 bg-blue-600 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">Let's Build Something Great Together</h2>
-        <p class="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">Whether you have a project in mind or just want to chat about technology, feel free to reach out.</p>
-        <a href="{% url 'contact' %}" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition inline-block">Get In Touch</a>
+<section class="py-20 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center cta-section">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">Ready to Work Together?</h2>
+        <p class="text-lg md:text-xl text-blue-100 mb-10 leading-relaxed max-w-3xl mx-auto">Whether you have an exciting project in mind, need technical consultation, or just want to discuss web development and competitive programming, I'd love to hear from you. Let's create something amazing together.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{% url 'contact' %}" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-blue-50 transition inline-block text-center">Start a Conversation</a>
+            <a href="{% url 'projects' %}" class="bg-blue-500 text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-400 transition inline-block text-center">View My Work</a>
+        </div>
     </div>
+
+    <script>
+        gsap.from('.cta-section h2, .cta-section p, .cta-section a', {
+            opacity: 0,
+            y: 20,
+            duration: 0.8,
+            stagger: 0.15,
+            immediateRender: false,
+            scrollTrigger: {
+                trigger: '.cta-section',
+                start: 'top 80%'
+            }
+        });
+    </script>
 </section>
 {% endblock %}
