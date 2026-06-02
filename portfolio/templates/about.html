@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}About ASH Emran - Full Stack Developer from Bangladesh{% endblock %}
+
+{% block meta_description %}Learn about ASH Emran - A Full Stack Developer and Competitive Programmer from Bangladesh. B.Sc CSE graduate with 3.71 CGPA, ICPC participant, and mentor at NEU Programming Club.{% endblock %}
+
+{% block canonical %}https://ashemran.shop/about/{% endblock %}
+
+{% block og_type %}website{% endblock %}
+{% block og_title %}About ASH Emran - Full Stack Developer{% endblock %}
+{% block og_description %}ASH Emran is a B.Sc CSE graduate with 3.71 CGPA, ICPC 2023 Ranked 147th, and mentor at NEU Programming Club. Passionate about web development and competitive programming.{% endblock %}
+{% block og_url %}https://ashemran.shop/about/{% endblock %}
+
+{% block twitter_title %}About ASH Emran{% endblock %}
+{% block twitter_description %}Full Stack Developer and Competitive Programmer. ICPC 2023 Ranked 147th, B.Sc CSE Graduate, NEU Programming Club Mentor.{% endblock %}
+
+{% block keywords %}ASH Emran, Full Stack Developer, Competitive Programmer, B.Sc CSE, ICPC, NEU, Programming Club{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "ASH Emran",
+    "title": "Full Stack Developer & Competitive Programmer",
+    "url": "https://ashemran.shop",
+    "email": "emranhaquee@gmail.com",
+    "telephone": "+8801521742124",
+    "image": "https://ashemran.shop/static/images/profile.jpg",
+    "jobTitle": "Full Stack Developer",
+    "homeLocation": {
+        "@type": "Place",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Sherpur",
+            "addressCountry": "Bangladesh"
+        }
+    },
+    "sameAs": [
+        "https://github.com/Emran-Haque",
+        "https://www.linkedin.com/in/ahta-shamul-hoque-emran-a56775367/"
+    ],
+    "worksFor": {
+        "@type": "Organization",
+        "name": "Freelance"
+    },
+    "education": {
+        "@type": "EducationalOccupationalCredential",
+        "name": "B.Sc. Computer Science & Engineering",
+        "educationalLevel": "Bachelor"
+    }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">About Me</h1>
+            <div class="h-1 w-20 bg-blue-600"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+            <!-- Main Content -->
+            <div class="md:col-span-2">
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-900">Hi, I'm {{ name }}</h2>
+                    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+                        {{ bio }}
+                    </p>
+                    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+                        I am a passionate <strong>Full Stack Developer</strong> with a strong foundation in computer science fundamentals. I specialize in building responsive web applications using modern technologies like Django, Nextjs, and TypeScript.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+                        Beyond web development, I have a keen interest in <strong>Competitive Programming</strong> and have participated in several programming contests. I love solving complex algorithmic problems and optimizing solutions.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Currently, I'm exploring the intersection of <strong>Machine Learning</strong> and web development, and continuously learning new technologies to stay updated with the industry trends.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Contact Card -->
+            <div>
+                <div class="bg-white p-8 rounded-lg shadow-lg sticky top-24">
+                    <h3 class="text-xl font-bold mb-6 text-gray-900">Contact Info</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-sm text-gray-600 mb-1">Email</p>
+                            <a href="mailto:{{ email }}" class="text-blue-600 hover:underline break-words">{{ email }}</a>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600 mb-1">Phone</p>
+                            <a href="tel:{{ phone }}" class="text-blue-600 hover:underline">{{ phone }}</a>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600 mb-1">Location</p>
+                            <p class="text-gray-900">{{ location }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Achievements -->
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-bold mb-8 text-gray-900">Key Achievements</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">147th</div>
+                    <p class="text-gray-700">ICPC Dhaka Regional 2023</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">3.71</div>
+                    <p class="text-gray-700">CGPA (B.Sc CSE)</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">5+</div>
+                    <p class="text-gray-700">Projects Completed</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">Mentor</div>
+                    <p class="text-gray-700">NEU Programming Club</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

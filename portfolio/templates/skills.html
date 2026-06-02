@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% block title %}Skills & Technologies - ASH Emran's Technical Stack{% endblock %}
+
+{% block meta_description %}ASH Emran's technical skills and technologies - Django, Python, JavaScript, React, TypeScript, Flutter, Tailwind CSS, REST APIs, Data Structures, Algorithms, and more.{% endblock %}
+
+{% block canonical %}https://ashemran.shop/skills/{% endblock %}
+
+{% block og_type %}website{% endblock %}
+{% block og_title %}Skills & Technologies - ASH Emran{% endblock %}
+{% block og_description %}Full Stack Developer with expertise in Django, Python, JavaScript, React, Flutter, and competitive programming. 10+ technologies and tools.{% endblock %}
+{% block og_url %}https://ashemran.shop/skills/{% endblock %}
+
+{% block twitter_title %}Skills & Technologies{% endblock %}
+{% block twitter_description %}Full Stack Developer - Django, Python, JavaScript, React, TypeScript, Flutter, Tailwind CSS, Data Structures, Algorithms.{% endblock %}
+
+{% block keywords %}skills, technologies, Django, Python, JavaScript, React, TypeScript, Flutter, Tailwind CSS, REST APIs, Data Structures{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Skills & Technologies - ASH Emran",
+    "description": "Full Stack Developer with expertise in Django, Python, JavaScript, React, Flutter, and competitive programming.",
+    "url": "https://ashemran.shop/skills/",
+    "mainEntity": {
+        "@type": "Person",
+        "name": "ASH Emran",
+        "knowsAbout": [
+            "Full Stack Development",
+            "Web Development",
+            "Mobile Development",
+            "Data Structures",
+            "Algorithms",
+            "Problem Solving"
+        ]
+    }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Skills & Technologies</h1>
+            <div class="h-1 w-20 bg-blue-600"></div>
+        </div>
+
+        <!-- Domain Expertise -->
+        <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
+            <h2 class="text-2xl font-bold mb-6 text-gray-900 flex items-center">
+                <span class="text-3xl mr-3">🎯</span>Domain Expertise
+            </h2>
+            <div class="flex flex-wrap gap-3">
+                {% for skill in domain_expertise %}
+                <span class="bg-red-100 text-red-800 text-sm font-semibold px-4 py-2 rounded-full">{{ skill }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Programming Languages -->
+        <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
+            <h2 class="text-2xl font-bold mb-6 text-gray-900 flex items-center">
+                <span class="text-3xl mr-3">💻</span>Programming Languages
+            </h2>
+            <div class="flex flex-wrap gap-3">
+                {% for lang in programming_languages %}
+                <span class="bg-green-100 text-green-800 text-sm font-semibold px-4 py-2 rounded-full">{{ lang }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Web Technologies -->
+        <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
+            <h2 class="text-2xl font-bold mb-6 text-gray-900 flex items-center">
+                <span class="text-3xl mr-3">🌐</span>Web Technologies
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-3">Frontend</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded">React</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded">CSS</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded">Nextjs</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded">TypeScript</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded">Tailwind CSS</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-3">Backend</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-purple-100 text-purple-800 text-sm font-semibold px-3 py-1 rounded">Django</span>
+                        <span class="bg-purple-100 text-purple-800 text-sm font-semibold px-3 py-1 rounded">Python</span>
+                        <span class="bg-purple-100 text-purple-800 text-sm font-semibold px-3 py-1 rounded">REST APIs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Software & Tools -->
+        <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
+            <h2 class="text-2xl font-bold mb-6 text-gray-900 flex items-center">
+                <span class="text-3xl mr-3">🛠️</span>Software & Tools
+            </h2>
+            <div class="flex flex-wrap gap-3">
+                {% for tool in software_tools %}
+                <span class="bg-yellow-100 text-yellow-800 text-sm font-semibold px-4 py-2 rounded-full">{{ tool }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Familiar With -->
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-bold mb-6 text-gray-900 flex items-center">
+                <span class="text-3xl mr-3">📚</span>Familiar With
+            </h2>
+            <div class="flex flex-wrap gap-3">
+                {% for item in familiar_with %}
+                <span class="bg-indigo-100 text-indigo-800 text-sm font-semibold px-4 py-2 rounded-full">{{ item }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Skill Levels -->
+        <div class="mt-12 bg-white p-8 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-bold mb-8 text-gray-900">Proficiency Levels</h2>
+            <div class="space-y-6">
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold text-gray-900">Python & Django</span>
+                        <span class="text-gray-600">90%</span>
+                    </div>
+                    <div class="bg-gray-200 rounded-full h-3">
+                        <div class="bg-blue-600 h-3 rounded-full" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold text-gray-900">Problem Solving & DSA</span>
+                        <span class="text-gray-600">85%</span>
+                    </div>
+                    <div class="bg-gray-200 rounded-full h-3">
+                        <div class="bg-green-600 h-3 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold text-gray-900">Web Technologies (HTML, CSS, JS)</span>
+                        <span class="text-gray-600">80%</span>
+                    </div>
+                    <div class="bg-gray-200 rounded-full h-3">
+                        <div class="bg-purple-600 h-3 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold text-gray-900">Flutter & Dart</span>
+                        <span class="text-gray-600">75%</span>
+                    </div>
+                    <div class="bg-gray-200 rounded-full h-3">
+                        <div class="bg-pink-600 h-3 rounded-full" style="width: 75%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

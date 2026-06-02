@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Character Encoding & Viewport -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Title & Meta Description -->
+    <title>{% block title %}ASH Emran - Full Stack Developer & Competitive Programmer{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}ASH Emran - Full Stack Developer, Competitive Programmer, and Software Engineer from Bangladesh. Explore my portfolio, projects, and competitive programming achievements.{% endblock %}">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{% block canonical %}https://ashemran.shop/{% endblock %}"
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}ASH Emran - Full Stack Developer & Competitive Programmer{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Full Stack Developer, Competitive Programmer, and Software Engineer. Explore my portfolio with 5+ projects, competitive programming achievements, and technical skills.{% endblock %}">
+    <meta property="og:url" content="{% block og_url %}https://ashemran.shop/{% endblock %}"
+    <meta property="og:image" content="https://ashemran.shop/static/images/og-image.jpg">
+    <meta property="og:site_name" content="ASH Emran Portfolio">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}ASH Emran - Full Stack Developer & Competitive Programmer{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Full Stack Developer & Competitive Programmer. Check out my portfolio, projects, and competitive programming achievements.{% endblock %}">
+    <meta name="twitter:image" content="https://ashemran.shop/static/images/og-image.jpg">
+    
+    <!-- Additional SEO -->
+    <meta name="author" content="ASH Emran">
+    <meta name="keywords" content="{% block keywords %}full stack developer, competitive programmer, portfolio, Django, Python, JavaScript, web development{% endblock %}">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-weight='bold' fill='%232563eb'>A</text></svg>">
+    
+    <!-- JSON-LD Structured Data -->
+    {% block json_ld %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "ASH Emran",
+        "title": "Full Stack Developer & Competitive Programmer",
+        "url": "https://ashemran.shop",
+        "image": "https://ashemran.shop/static/images/profile.jpg",
+        "sameAs": [
+            "https://github.com/Emran-Haque",
+            "https://www.linkedin.com/in/ahta-shamul-hoque-emran-a56775367/"
+        ],
+        "jobTitle": "Full Stack Developer",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Freelance"
+        },
+        "homeLocation": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Sherpur",
+                "addressCountry": "Bangladesh"
+            }
+        },
+        "email": "emranhaquee@gmail.com",
+        "telephone": "+8801521742124"
+    }
+    </script>
+    {% endblock %}
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="{% url 'home' %}" class="flex items-center">
+                        <span class="text-2xl font-bold text-blue-600">ASH</span>
+                        <span class="text-sm ml-2 text-gray-600">Portfolio</span>
+                    </a>
+                </div>
+                
+                <div class="flex items-center space-x-1 md:space-x-4">
+                    <a href="{% url 'home' %}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition">Home</a>
+                    <a href="{% url 'about' %}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition">About</a>
+                    <a href="{% url 'education' %}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition">Education</a>
+                    <a href="{% url 'skills' %}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition">Skills</a>
+                    <a href="{% url 'projects' %}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition">Projects</a>
+                    <a href="{% url 'competitive_programming' %}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition">CP</a>
+                    <a href="{% url 'contact' %}" class="px-3 py-2 rounded-md text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4">ASH Emran</h3>
+                    <p class="text-sm">Full Stack Developer & Competitive Programmer</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="{% url 'about' %}" class="hover:text-blue-400 transition">About</a></li>
+                        <li><a href="{% url 'projects' %}" class="hover:text-blue-400 transition">Projects</a></li>
+                        <li><a href="{% url 'contact' %}" class="hover:text-blue-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4">Connect</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/Emran-Haque" target="_blank" rel="noopener" class="hover:text-blue-400 transition">GitHub</a>
+                        <a href="https://www.linkedin.com/in/ahta-shamul-hoque-emran-a56775367/" target="_blank" rel="noopener" class="hover:text-blue-400 transition">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-gray-700 mb-8">
+            <div class="text-center text-sm">
+                <p>&copy; 2026 ASH Emran. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
