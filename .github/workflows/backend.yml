@@ -1,0 +1,66 @@
+name: Backend CI/CD
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.py'
+      - 'requirements.txt'
+      - '.github/workflows/backend.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - '**.py'
+      - 'requirements.txt'
+
+env:
+  DJANGO_SECRET_KEY: ci-secret-key-not-used-in-production
+
+jobs:
+  # ── CI: run checks & tests ─────────────────────────────────────
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Django system check
+        run: python manage.py check
+
+      - name: Run migrations
+        run: python manage.py migrate --noinput
+
+      - name: Run tests
+        run: python manage.py test
+
+  # ── CD: deploy to cPanel via SSH ───────────────────────────────
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - name: SSH deploy to cPanel
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.CPANEL_HOST }}
+          username: ${{ secrets.CPANEL_USER }}
+          key: ${{ secrets.CPANEL_SSH_KEY }}
+          port: 22
+          script: |
+            set -e
+            cd ${{ secrets.DEPLOY_PATH }}
+            git pull origin main
+            source ${{ secrets.VENV_ACTIVATE }}
+            pip install -r requirements.txt --quiet
+            python manage.py migrate --noinput
+            python manage.py collectstatic --noinput
+            mkdir -p tmp && touch tmp/restart.txt
