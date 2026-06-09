@@ -45,6 +45,9 @@ Thumbs.db
 .env
 .env.local
 
+# Node
+node_modules/
+
 # Next.js
 portfolio-frontend/.next/
 portfolio-frontend/node_modules/
