@@ -41,26 +41,33 @@ jobs:
       - name: Run tests
         run: python manage.py test
 
-  # ── CD: deploy to cPanel via SSH ───────────────────────────────
+  # ── CD: deploy to cPanel via FTP ────────────────────────────────
   deploy:
     needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
     steps:
-      - name: SSH deploy to cPanel
-        uses: appleboy/ssh-action@v1.0.3
+      - uses: actions/checkout@v4
+
+      - name: Touch restart.txt to trigger Passenger reload on upload
+        run: mkdir -p tmp && touch tmp/restart.txt
+
+      - name: Upload files via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          host: ${{ secrets.CPANEL_HOST }}
-          username: ${{ secrets.CPANEL_USER }}
-          key: ${{ secrets.CPANEL_SSH_KEY }}
-          port: 22
-          script: |
-            set -e
-            cd ${{ secrets.DEPLOY_PATH }}
-            git pull origin main
-            source ${{ secrets.VENV_ACTIVATE }}
-            pip install -r requirements.txt --quiet
-            python manage.py migrate --noinput
-            python manage.py collectstatic --noinput
-            mkdir -p tmp && touch tmp/restart.txt
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          protocol: ftps
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          local-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/__pycache__/**
+            **/*.pyc
+            **/*.sqlite3
+            .env
+            .env.*
