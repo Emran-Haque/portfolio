@@ -10,9 +10,9 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '_^)vd6-d2pd@-vm-e*%ur=apsqz_@8
 
 DEBUG = False  # Always False unless local_settings overrides it
 
-ALLOWED_HOSTS = ['ashemran.shop', 'www.ashemran.shop', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['ashemran.shop', 'www.ashemran.shop', 'localhost', '127.0.0.1', 'backend.ashemran.shop', 'www.backend.ashemran.shop']
 
-CSRF_TRUSTED_ORIGINS = ['https://ashemran.shop', 'https://www.ashemran.shop']
+CSRF_TRUSTED_ORIGINS = ['https://ashemran.shop', 'https://www.ashemran.shop', 'https://backend.ashemran.shop', 'https://www.backend.ashemran.shop']
 
 # -----------------------------------------------------------------
 # Applications
