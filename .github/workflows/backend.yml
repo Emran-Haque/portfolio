@@ -80,7 +80,5 @@ jobs:
             **/node_modules/**
             **/__pycache__/**
             **/*.pyc
-            **/*.sqlite3
-            media/**
             .env
             .env.*
