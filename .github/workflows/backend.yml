@@ -78,7 +78,6 @@ jobs:
             **/.git*
             **/.git*/**
             **/node_modules/**
-            **/staticfiles/**
             **/__pycache__/**
             **/*.pyc
             **/*.sqlite3
