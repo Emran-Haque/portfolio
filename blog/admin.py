@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Blog
+from .models import Blog, Comment
 
 
 @admin.register(Blog)
@@ -33,3 +33,11 @@ class BlogAdmin(admin.ModelAdmin):
             'fields': ('is_published', 'featured')
         }),
     )
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'blog', 'created_at')
+    list_filter = ('created_at',)
+    search_fields = ('name', 'body', 'blog__title')
+    readonly_fields = ('created_at',)

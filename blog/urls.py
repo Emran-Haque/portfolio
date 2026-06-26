@@ -6,4 +6,5 @@ urlpatterns = [
     path('featured/', views.FeaturedBlogsView.as_view(), name='blog-featured'),
     path('<slug:slug>/', views.BlogDetailView.as_view(), name='blog-detail'),
     path('<slug:slug>/related/', views.RelatedBlogsView.as_view(), name='blog-related'),
+    path('<slug:slug>/comments/', views.CommentListCreateView.as_view(), name='blog-comments'),
 ]

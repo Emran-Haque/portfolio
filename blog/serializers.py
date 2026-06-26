@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Blog
+from .models import Blog, Comment
 
 
 class BlogListSerializer(serializers.ModelSerializer):
@@ -31,3 +31,10 @@ class BlogDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blog
         fields = '__all__'
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ['id', 'name', 'body', 'created_at']
+        read_only_fields = ['id', 'created_at']

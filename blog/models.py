@@ -54,3 +54,16 @@ class Blog(models.Model):
             self.meta_description = self.description
 
         super().save(*args, **kwargs)
+
+
+class Comment(models.Model):
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(max_length=100)
+    body = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"{self.name} on '{self.blog.title}'"
